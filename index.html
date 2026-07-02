@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Login Clone</title>
+    <style>
+        /* --- CSS STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 350px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .login-box, .signup-box {
+            background-color: #ffffff;
+            border: 1px solid #dbdbdb;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .logo img {
+            margin-bottom: 30px;
+            width: 175px;
+            cursor: pointer;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .input-field {
+            position: relative;
+            width: 100%;
+            height: 38px;
+            background-color: #fafafa;
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+        }
+
+        .input-field input {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            padding: 14px 8px 2px 8px;
+            font-size: 12px;
+        }
+
+        .input-field label {
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8e8e8e;
+            font-size: 12px;
+            transition: all 0.1s ease;
+            pointer-events: none;
+        }
+
+        /* Float label up when input has text or focus */
+        .input-field input:focus ~ label,
+        .input-field input:valid ~ label {
+            transform: translateY(-14px);
+            font-size: 10px;
+        }
+
+        #toggle-password {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: none;
+            color: #262626;
+        }
+
+        #login-btn {
+            background-color: #4cb5f9;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 7px 0;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        #login-btn:disabled {
+            background-color: rgba(0, 149, 246, 0.3);
+            cursor: default;
+        }
+
+        #login-btn:not(:disabled):hover {
+            background-color: #0095f6;
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .line {
+            flex: 1;
+            height: 1px;
+            background-color: #dbdbdb;
+        }
+
+        .or {
+            padding: 0 18px;
+            color: #8e8e8e;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .fb-login a {
+            color: #385185;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .fb-login img {
+            width: 16px;
+        }
+
+        .forgot-password {
+            color: #00376b;
+            font-size: 12px;
+            text-decoration: none;
+            margin-top: 12px;
+        }
+
+        .signup-box p {
+            font-size: 14px;
+            color: #262626;
+        }
+
+        .signup-box a {
+            color: #0095f6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .get-app {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .get-app p {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: #262626;
+        }
+
+        .app-buttons img {
+            height: 40px;
+            cursor: pointer;
+            margin: 0 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- --- HTML STRUCTURE --- -->
+    <div class="container">
+        <!-- Main Login Box -->
+        <div class="login-box">
+            <div class="logo">
+                <img src="https://instagram.com" alt="Instagram" onclick="window.location.href='https://instagram.com'">
+            </div>
+            
+            <form id="login-form">
+                <div class="input-field">
+                    <input type="text" id="username" required autocomplete="off">
+                    <label for="username">Phone number, username, or email</label>
+                </div>
+                
+                <div class="input-field">
+                    <input type="password" id="password" required autocomplete="off">
+                    <label for="password">Password</label>
+                    <button type="button" id="toggle-password">Show</button>
+                </div>
+                
+                <button type="submit" id="login-btn" disabled>Log in</button>
+                
+                <div class="separator">
+                    <div class="line"></div>
+                    <div class="or">OR</div>
+                    <div class="line"></div>
+                </div>
+                
+                <div class="fb-login">
+                    <a href="https://facebook.com">
+                        <img src="https://wikimedia.org" alt="FB">
+                        Log in with Facebook
+                    </a>
+                </div>
+                
+                <a href="https://instagram.com/accounts/password/reset/" class="forgot-password">Forgot password?</a>
+            </form>
+        </div>
+        
+        <!-- Sign Up Box -->
+        <div class="signup-box">
+            <p>Don't have an account? <a href="https://instagram.com/accounts/emailsignup/">Sign up</a></p>
+        </div>
+        
+        <!-- App Download Section -->
+        <div class="get-app">
+            <p>Get the app.</p>
+            <div class="app-buttons">
+                <img src="https://cdninstagram.com" alt="Google Play" onclick="window.location.href='https://google.com'">
+                <img src="https://cdninstagram.com" alt="Microsoft" onclick="window.location.href='https://microsoft.com'">
+            </div>
+        </div>
+    </div>
+
+    <!-- --- JAVASCRIPT LOGIC --- -->
+    <script>
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const loginBtn = document.getElementById('login-btn');
+        const togglePasswordBtn = document.getElementById('toggle-password');
+        const loginForm = document.getElementById('login-form');
+
+        // Enable/Disable login button based on basic criteria
+        function validateInputs() {
+            if (usernameInput.value.trim().length > 0 && passwordInput.value.length >= 6) {
+                loginBtn.removeAttribute('disabled');
+            } else {
+                loginBtn.setAttribute('disabled', 'true');
+            }
+        }
+
+        // Show/Hide the "Show" inline password text toggle
+        passwordInput.addEventListener('input', () => {
+            if (passwordInput.value.length > 0) {
+                togglePasswordBtn.style.display = 'block';
+            } else {
+                togglePasswordBtn.style.display = 'none';
+            }
+            validateInputs();
+        });
+
+        usernameInput.addEventListener('input', validateInputs);
+
+        // Toggle text hiding/revealing functionality
+        togglePasswordBtn.addEventListener('click', () => {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                togglePasswordBtn.textContent = 'Hide';
+            } else {
+                passwordInput.type = 'password';
+                togglePasswordBtn.textContent = 'Show';
+            }
+        });
+
+        // Form submission intercept with simulated success page redirect
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Visual feedback on the button
+            loginBtn.textContent = "Logging in...";
+            loginBtn.setAttribute('disabled', 'true');
+
+            // Redirect to a placeholder logged-in dashboard screen after 1.5 seconds
+            setTimeout(() => {
+                window.location.href = "https://instagram.com";
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
